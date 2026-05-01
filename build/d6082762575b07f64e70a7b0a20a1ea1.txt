@@ -1,0 +1,253 @@
+[31m---------------------------------------------------------------------------[39m
+[31mKeyError[39m                                  Traceback (most recent call last)
+[36mFile [39m[32m~/micromamba/envs/uxarray-vorticity-cookbook-dev/lib/python3.14/site-packages/xarray/backends/file_manager.py:219[39m, in [36mCachingFileManager._acquire_with_cache_info[39m[34m(self, needs_lock)[39m
+[32m    218[39m [38;5;28;01mtry[39;00m:
+[32m--> [39m[32m219[39m     file = [30;43mself[39;49m[30;43m.[39;49m[30;43m_cache[39;49m[30;43m[[39;49m[30;43mself[39;49m[30;43m.[39;49m[30;43m_key[39;49m[30;43m][39;49m
+[32m    220[39m [38;5;28;01mexcept[39;00m [38;5;167;01mKeyError[39;00m:
+
+[36mFile [39m[32m~/micromamba/envs/uxarray-vorticity-cookbook-dev/lib/python3.14/site-packages/xarray/backends/lru_cache.py:56[39m, in [36mLRUCache.__getitem__[39m[34m(self, key)[39m
+[32m     55[39m [38;5;28;01mwith[39;00m [38;5;28mself[39m._lock:
+[32m---> [39m[32m56[39m     value = [30;43mself[39;49m[30;43m.[39;49m[30;43m_cache[39;49m[30;43m[[39;49m[30;43mkey[39;49m[30;43m][39;49m
+[32m     57[39m     [38;5;28mself[39m._cache.move_to_end(key)
+
+[31mKeyError[39m: [<class 'netCDF4._netCDF4.Dataset'>, ('/Users/Shared/JohnsData/MPAS/dymond_1_Falko/120km/x1.40962.grid.nc',), 'r', (('clobber', True), ('diskless', False), ('format', 'NETCDF4'), ('persist', False)), 'c84e43f5-e9cd-4e26-baba-0b7412951abd']
+
+During handling of the above exception, another exception occurred:
+
+[31mFileNotFoundError[39m                         Traceback (most recent call last)
+[36mFile [39m[32m~/micromamba/envs/uxarray-vorticity-cookbook-dev/lib/python3.14/site-packages/uxarray/core/utils.py:33[39m, in [36m_open_dataset_with_fallback[39m[34m(filename_or_obj, chunks, **kwargs)[39m
+[32m     31[39m [38;5;28;01mtry[39;00m:
+[32m     32[39m     [38;5;66;03m# Try opening with xarray's default read engine[39;00m
+[32m---> [39m[32m33[39m     [38;5;28;01mreturn[39;00m [30;43mxr[39;49m[30;43m.[39;49m[30;43mopen_dataset[39;49m[30;43m([39;49m[30;43mfilename_or_obj[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mchunks[39;49m[30;43m=[39;49m[30;43mchunks[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43m*[39;49m[30;43m*[39;49m[30;43mkwargs[39;49m[30;43m)[39;49m
+[32m     34[39m [38;5;28;01mexcept[39;00m [38;5;167;01mException[39;00m:
+[32m     35[39m     [38;5;66;03m# If it fails, use the "netcdf4" engine as backup[39;00m
+[32m     36[39m     [38;5;66;03m# Extract engine from kwargs to prevent duplicate parameter error[39;00m
+
+[36mFile [39m[32m~/micromamba/envs/uxarray-vorticity-cookbook-dev/lib/python3.14/site-packages/xarray/backends/api.py:607[39m, in [36mopen_dataset[39m[34m(filename_or_obj, engine, chunks, cache, decode_cf, mask_and_scale, decode_times, decode_timedelta, use_cftime, concat_characters, decode_coords, drop_variables, create_default_indexes, inline_array, chunked_array_type, from_array_kwargs, backend_kwargs, **kwargs)[39m
+[32m    606[39m overwrite_encoded_chunks = kwargs.pop([33m"[39m[33moverwrite_encoded_chunks[39m[33m"[39m, [38;5;28;01mNone[39;00m)
+[32m--> [39m[32m607[39m backend_ds = [30;43mbackend[39;49m[30;43m.[39;49m[30;43mopen_dataset[39;49m[30;43m([39;49m
+[32m    608[39m [30;43m    [39;49m[30;43mfilename_or_obj[39;49m[30;43m,[39;49m
+[32m    609[39m [30;43m    [39;49m[30;43mdrop_variables[39;49m[30;43m=[39;49m[30;43mdrop_variables[39;49m[30;43m,[39;49m
+[32m    610[39m [30;43m    [39;49m[30;43m*[39;49m[30;43m*[39;49m[30;43mdecoders[39;49m[30;43m,[39;49m
+[32m    611[39m [30;43m    [39;49m[30;43m*[39;49m[30;43m*[39;49m[30;43mkwargs[39;49m[30;43m,[39;49m
+[32m    612[39m [30;43m[39;49m[30;43m)[39;49m
+[32m    613[39m ds = _dataset_from_backend_dataset(
+[32m    614[39m     backend_ds,
+[32m    615[39m     filename_or_obj,
+[32m   (...)[39m[32m    626[39m     **kwargs,
+[32m    627[39m )
+
+[36mFile [39m[32m~/micromamba/envs/uxarray-vorticity-cookbook-dev/lib/python3.14/site-packages/xarray/backends/netCDF4_.py:771[39m, in [36mNetCDF4BackendEntrypoint.open_dataset[39m[34m(self, filename_or_obj, mask_and_scale, decode_times, concat_characters, decode_coords, drop_variables, use_cftime, decode_timedelta, group, mode, format, clobber, diskless, persist, auto_complex, lock, autoclose)[39m
+[32m    770[39m filename_or_obj = _normalize_path(filename_or_obj)
+[32m--> [39m[32m771[39m store = [30;43mNetCDF4DataStore[39;49m[30;43m.[39;49m[30;43mopen[39;49m[30;43m([39;49m
+[32m    772[39m [30;43m    [39;49m[30;43mfilename_or_obj[39;49m[30;43m,[39;49m
+[32m    773[39m [30;43m    [39;49m[30;43mmode[39;49m[30;43m=[39;49m[30;43mmode[39;49m[30;43m,[39;49m
+[32m    774[39m [30;43m    [39;49m[30;43mformat[39;49m[30;43m=[39;49m[30;43mformat[39;49m[30;43m,[39;49m
+[32m    775[39m [30;43m    [39;49m[30;43mgroup[39;49m[30;43m=[39;49m[30;43mgroup[39;49m[30;43m,[39;49m
+[32m    776[39m [30;43m    [39;49m[30;43mclobber[39;49m[30;43m=[39;49m[30;43mclobber[39;49m[30;43m,[39;49m
+[32m    777[39m [30;43m    [39;49m[30;43mdiskless[39;49m[30;43m=[39;49m[30;43mdiskless[39;49m[30;43m,[39;49m
+[32m    778[39m [30;43m    [39;49m[30;43mpersist[39;49m[30;43m=[39;49m[30;43mpersist[39;49m[30;43m,[39;49m
+[32m    779[39m [30;43m    [39;49m[30;43mauto_complex[39;49m[30;43m=[39;49m[30;43mauto_complex[39;49m[30;43m,[39;49m
+[32m    780[39m [30;43m    [39;49m[30;43mlock[39;49m[30;43m=[39;49m[30;43mlock[39;49m[30;43m,[39;49m
+[32m    781[39m [30;43m    [39;49m[30;43mautoclose[39;49m[30;43m=[39;49m[30;43mautoclose[39;49m[30;43m,[39;49m
+[32m    782[39m [30;43m[39;49m[30;43m)[39;49m
+[32m    784[39m store_entrypoint = StoreBackendEntrypoint()
+
+[36mFile [39m[32m~/micromamba/envs/uxarray-vorticity-cookbook-dev/lib/python3.14/site-packages/xarray/backends/netCDF4_.py:529[39m, in [36mNetCDF4DataStore.open[39m[34m(cls, filename, mode, format, group, clobber, diskless, persist, auto_complex, lock, lock_maker, autoclose)[39m
+[32m    526[39m     manager = CachingFileManager(
+[32m    527[39m         netCDF4.Dataset, filename, mode=mode, kwargs=kwargs, lock=lock
+[32m    528[39m     )
+[32m--> [39m[32m529[39m [38;5;28;01mreturn[39;00m [30;43mcls[39;49m[30;43m([39;49m[30;43mmanager[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mgroup[39;49m[30;43m=[39;49m[30;43mgroup[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mmode[39;49m[30;43m=[39;49m[30;43mmode[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mlock[39;49m[30;43m=[39;49m[30;43mlock[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mautoclose[39;49m[30;43m=[39;49m[30;43mautoclose[39;49m[30;43m)[39;49m
+
+[36mFile [39m[32m~/micromamba/envs/uxarray-vorticity-cookbook-dev/lib/python3.14/site-packages/xarray/backends/netCDF4_.py:429[39m, in [36mNetCDF4DataStore.__init__[39m[34m(self, manager, group, mode, lock, autoclose)[39m
+[32m    428[39m [38;5;28mself[39m._mode = mode
+[32m--> [39m[32m429[39m [38;5;28mself[39m.format = [30;43mself[39;49m[30;43m.[39;49m[30;43mds[39;49m.data_model
+[32m    430[39m [38;5;28mself[39m._filename = [38;5;28mself[39m.ds.filepath()
+
+[36mFile [39m[32m~/micromamba/envs/uxarray-vorticity-cookbook-dev/lib/python3.14/site-packages/xarray/backends/netCDF4_.py:538[39m, in [36mNetCDF4DataStore.ds[39m[34m(self)[39m
+[32m    536[39m [38;5;129m@property[39m
+[32m    537[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34mds[39m([38;5;28mself[39m):
+[32m--> [39m[32m538[39m     [38;5;28;01mreturn[39;00m [30;43mself[39;49m[30;43m.[39;49m[30;43m_acquire[39;49m[30;43m([39;49m[30;43m)[39;49m
+
+[36mFile [39m[32m~/micromamba/envs/uxarray-vorticity-cookbook-dev/lib/python3.14/site-packages/xarray/backends/netCDF4_.py:532[39m, in [36mNetCDF4DataStore._acquire[39m[34m(self, needs_lock)[39m
+[32m    531[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34m_acquire[39m([38;5;28mself[39m, needs_lock=[38;5;28;01mTrue[39;00m):
+[32m--> [39m[32m532[39m [30;43m    [39;49m[30;43;01mwith[39;49;00m[30;43m [39;49m[30;43mself[39;49m[30;43m.[39;49m[30;43m_manager[39;49m[30;43m.[39;49m[30;43macquire_context[39;49m[30;43m([39;49m[30;43mneeds_lock[39;49m[30;43m)[39;49m[30;43m [39;49m[30;43;01mas[39;49;00m[30;43m [39;49m[30;43mroot[39;49m[30;43m:[39;49m
+[32m    533[39m [30;43m        [39;49m[30;43mds[39;49m[30;43m [39;49m[30;43m=[39;49m[30;43m [39;49m[30;43m_nc4_require_group[39;49m[30;43m([39;49m[30;43mroot[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mself[39;49m[30;43m.[39;49m[30;43m_group[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mself[39;49m[30;43m.[39;49m[30;43m_mode[39;49m[30;43m)[39;49m
+
+[36mFile [39m[32m~/micromamba/envs/uxarray-vorticity-cookbook-dev/lib/python3.14/contextlib.py:141[39m, in [36m_GeneratorContextManager.__enter__[39m[34m(self)[39m
+[32m    140[39m [38;5;28;01mtry[39;00m:
+[32m--> [39m[32m141[39m     [38;5;28;01mreturn[39;00m [30;43mnext[39;49m[30;43m([39;49m[30;43mself[39;49m[30;43m.[39;49m[30;43mgen[39;49m[30;43m)[39;49m
+[32m    142[39m [38;5;28;01mexcept[39;00m [38;5;167;01mStopIteration[39;00m:
+
+[36mFile [39m[32m~/micromamba/envs/uxarray-vorticity-cookbook-dev/lib/python3.14/site-packages/xarray/backends/file_manager.py:207[39m, in [36mCachingFileManager.acquire_context[39m[34m(self, needs_lock)[39m
+[32m    206[39m [38;5;250m[39m[33;03m"""Context manager for acquiring a file."""[39;00m
+[32m--> [39m[32m207[39m file, cached = [30;43mself[39;49m[30;43m.[39;49m[30;43m_acquire_with_cache_info[39;49m[30;43m([39;49m[30;43mneeds_lock[39;49m[30;43m)[39;49m
+[32m    208[39m [38;5;28;01mtry[39;00m:
+
+[36mFile [39m[32m~/micromamba/envs/uxarray-vorticity-cookbook-dev/lib/python3.14/site-packages/xarray/backends/file_manager.py:225[39m, in [36mCachingFileManager._acquire_with_cache_info[39m[34m(self, needs_lock)[39m
+[32m    224[39m     kwargs[[33m"[39m[33mmode[39m[33m"[39m] = [38;5;28mself[39m._mode
+[32m--> [39m[32m225[39m file = [30;43mself[39;49m[30;43m.[39;49m[30;43m_opener[39;49m[30;43m([39;49m[30;43m*[39;49m[30;43mself[39;49m[30;43m.[39;49m[30;43m_args[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43m*[39;49m[30;43m*[39;49m[30;43mkwargs[39;49m[30;43m)[39;49m
+[32m    226[39m [38;5;28;01mif[39;00m [38;5;28mself[39m._mode == [33m"[39m[33mw[39m[33m"[39m:
+[32m    227[39m     [38;5;66;03m# ensure file doesn't get overridden when opened again[39;00m
+
+[36mFile [39m[32msrc/netCDF4/_netCDF4.pyx:2522[39m
+[32m-> [39m[32m2522[39m [33m'Could not get source, probably due dynamically evaluated source code.'[39m
+
+[36mFile [39m[32msrc/netCDF4/_netCDF4.pyx:2159[39m
+[32m-> [39m[32m2159[39m [33m'Could not get source, probably due dynamically evaluated source code.'[39m
+
+[31mFileNotFoundError[39m: [Errno 2] No such file or directory: '/Users/Shared/JohnsData/MPAS/dymond_1_Falko/120km/x1.40962.grid.nc'
+
+During handling of the above exception, another exception occurred:
+
+[31mKeyError[39m                                  Traceback (most recent call last)
+[36mFile [39m[32m~/micromamba/envs/uxarray-vorticity-cookbook-dev/lib/python3.14/site-packages/xarray/backends/file_manager.py:219[39m, in [36mCachingFileManager._acquire_with_cache_info[39m[34m(self, needs_lock)[39m
+[32m    218[39m [38;5;28;01mtry[39;00m:
+[32m--> [39m[32m219[39m     file = [30;43mself[39;49m[30;43m.[39;49m[30;43m_cache[39;49m[30;43m[[39;49m[30;43mself[39;49m[30;43m.[39;49m[30;43m_key[39;49m[30;43m][39;49m
+[32m    220[39m [38;5;28;01mexcept[39;00m [38;5;167;01mKeyError[39;00m:
+
+[36mFile [39m[32m~/micromamba/envs/uxarray-vorticity-cookbook-dev/lib/python3.14/site-packages/xarray/backends/lru_cache.py:56[39m, in [36mLRUCache.__getitem__[39m[34m(self, key)[39m
+[32m     55[39m [38;5;28;01mwith[39;00m [38;5;28mself[39m._lock:
+[32m---> [39m[32m56[39m     value = [30;43mself[39;49m[30;43m.[39;49m[30;43m_cache[39;49m[30;43m[[39;49m[30;43mkey[39;49m[30;43m][39;49m
+[32m     57[39m     [38;5;28mself[39m._cache.move_to_end(key)
+
+[31mKeyError[39m: [<class 'netCDF4._netCDF4.Dataset'>, ('/Users/Shared/JohnsData/MPAS/dymond_1_Falko/120km/x1.40962.grid.nc',), 'r', (('clobber', True), ('diskless', False), ('format', 'NETCDF4'), ('persist', False)), 'e3ba899d-e49a-4080-86f3-b6c905605a6d']
+
+During handling of the above exception, another exception occurred:
+
+[31mFileNotFoundError[39m                         Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[2][39m[32m, line 4[39m
+[32m      1[39m grid_path = [33m"/Users/Shared/JohnsData/MPAS/dymond_1_Falko/120km/x1.40962.grid.nc"[39m
+[32m      2[39m data_path = [33m"/Users/Shared/JohnsData/MPAS/dymond_1_Falko/120km/diag.2016-08-20_00.00.00.nc"[39m
+[32m      3[39m 
+[32m----> [39m[32m4[39m uxds = ux.open_dataset(grid_path, data_path)
+[32m      5[39m uxds
+
+[36mFile [39m[32m~/micromamba/envs/uxarray-vorticity-cookbook-dev/lib/python3.14/site-packages/uxarray/core/api.py:414[39m, in [36mopen_dataset[39m[34m(grid_filename_or_obj, filename_or_obj, chunks, chunk_grid, use_dual, grid_kwargs, **kwargs)[39m
+[32m    411[39m     grid_kwargs = {}
+[32m    413[39m [38;5;66;03m# Construct a Grid, validate parameters, and correct chunks[39;00m
+[32m--> [39m[32m414[39m uxgrid, corrected_chunks = [30;43m_get_grid[39;49m[30;43m([39;49m
+[32m    415[39m [30;43m    [39;49m[30;43mgrid_filename_or_obj[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mchunks[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mchunk_grid[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43muse_dual[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mgrid_kwargs[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43m*[39;49m[30;43m*[39;49m[30;43mkwargs[39;49m
+[32m    416[39m [30;43m[39;49m[30;43m)[39;49m
+[32m    418[39m [38;5;66;03m# Load the data as a Xarray Dataset[39;00m
+[32m    419[39m ds = _open_dataset_with_fallback(filename_or_obj, chunks=corrected_chunks, **kwargs)
+
+[36mFile [39m[32m~/micromamba/envs/uxarray-vorticity-cookbook-dev/lib/python3.14/site-packages/uxarray/core/api.py:531[39m, in [36m_get_grid[39m[34m(grid_filename_or_obj, chunks, chunk_grid, use_dual, grid_kwargs, **kwargs)[39m
+[32m    528[39m grid_kwargs[[33m"[39m[33mreturn_chunks[39m[33m"[39m] = [38;5;28;01mTrue[39;00m
+[32m    530[39m [38;5;66;03m# Create a Grid[39;00m
+[32m--> [39m[32m531[39m [38;5;28;01mreturn[39;00m [30;43mopen_grid[39;49m[30;43m([39;49m[30;43mgrid_filename_or_obj[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43muse_dual[39;49m[30;43m=[39;49m[30;43muse_dual[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43m*[39;49m[30;43m*[39;49m[30;43mgrid_kwargs[39;49m[30;43m)[39;49m
+
+[36mFile [39m[32m~/micromamba/envs/uxarray-vorticity-cookbook-dev/lib/python3.14/site-packages/uxarray/core/api.py:130[39m, in [36mopen_grid[39m[34m(grid_filename_or_obj, chunks, use_dual, **kwargs)[39m
+[32m    126[39m     grid = Grid.from_dataset(grid_filename_or_obj, use_dual=use_dual)
+[32m    128[39m [38;5;28;01melse[39;00m:
+[32m    129[39m     [38;5;66;03m# Attempt to use Xarray directly for remaining input types[39;00m
+[32m--> [39m[32m130[39m     grid_ds = [30;43m_open_dataset_with_fallback[39;49m[30;43m([39;49m
+[32m    131[39m [30;43m        [39;49m[30;43mgrid_filename_or_obj[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mchunks[39;49m[30;43m=[39;49m[30;43mgrid_chunks[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43m*[39;49m[30;43m*[39;49m[30;43mkwargs[39;49m
+[32m    132[39m [30;43m    [39;49m[30;43m)[39;49m
+[32m    133[39m     grid = Grid.from_dataset(grid_ds, use_dual=use_dual)
+[32m    135[39m [38;5;66;03m# Return the grid (and chunks, if requested) in a consistent manner.[39;00m
+
+[36mFile [39m[32m~/micromamba/envs/uxarray-vorticity-cookbook-dev/lib/python3.14/site-packages/uxarray/core/utils.py:38[39m, in [36m_open_dataset_with_fallback[39m[34m(filename_or_obj, chunks, **kwargs)[39m
+[32m     34[39m [38;5;28;01mexcept[39;00m [38;5;167;01mException[39;00m:
+[32m     35[39m     [38;5;66;03m# If it fails, use the "netcdf4" engine as backup[39;00m
+[32m     36[39m     [38;5;66;03m# Extract engine from kwargs to prevent duplicate parameter error[39;00m
+[32m     37[39m     engine = kwargs.pop([33m"[39m[33mengine[39m[33m"[39m, [33m"[39m[33mnetcdf4[39m[33m"[39m)
+[32m---> [39m[32m38[39m     [38;5;28;01mreturn[39;00m [30;43mxr[39;49m[30;43m.[39;49m[30;43mopen_dataset[39;49m[30;43m([39;49m[30;43mfilename_or_obj[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mengine[39;49m[30;43m=[39;49m[30;43mengine[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mchunks[39;49m[30;43m=[39;49m[30;43mchunks[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43m*[39;49m[30;43m*[39;49m[30;43mkwargs[39;49m[30;43m)[39;49m
+
+[36mFile [39m[32m~/micromamba/envs/uxarray-vorticity-cookbook-dev/lib/python3.14/site-packages/xarray/backends/api.py:607[39m, in [36mopen_dataset[39m[34m(filename_or_obj, engine, chunks, cache, decode_cf, mask_and_scale, decode_times, decode_timedelta, use_cftime, concat_characters, decode_coords, drop_variables, create_default_indexes, inline_array, chunked_array_type, from_array_kwargs, backend_kwargs, **kwargs)[39m
+[32m    595[39m decoders = _resolve_decoders_kwargs(
+[32m    596[39m     decode_cf,
+[32m    597[39m     open_backend_dataset_parameters=backend.open_dataset_parameters,
+[32m   (...)[39m[32m    603[39m     decode_coords=decode_coords,
+[32m    604[39m )
+[32m    606[39m overwrite_encoded_chunks = kwargs.pop([33m"[39m[33moverwrite_encoded_chunks[39m[33m"[39m, [38;5;28;01mNone[39;00m)
+[32m--> [39m[32m607[39m backend_ds = [30;43mbackend[39;49m[30;43m.[39;49m[30;43mopen_dataset[39;49m[30;43m([39;49m
+[32m    608[39m [30;43m    [39;49m[30;43mfilename_or_obj[39;49m[30;43m,[39;49m
+[32m    609[39m [30;43m    [39;49m[30;43mdrop_variables[39;49m[30;43m=[39;49m[30;43mdrop_variables[39;49m[30;43m,[39;49m
+[32m    610[39m [30;43m    [39;49m[30;43m*[39;49m[30;43m*[39;49m[30;43mdecoders[39;49m[30;43m,[39;49m
+[32m    611[39m [30;43m    [39;49m[30;43m*[39;49m[30;43m*[39;49m[30;43mkwargs[39;49m[30;43m,[39;49m
+[32m    612[39m [30;43m[39;49m[30;43m)[39;49m
+[32m    613[39m ds = _dataset_from_backend_dataset(
+[32m    614[39m     backend_ds,
+[32m    615[39m     filename_or_obj,
+[32m   (...)[39m[32m    626[39m     **kwargs,
+[32m    627[39m )
+[32m    628[39m [38;5;28;01mreturn[39;00m ds
+
+[36mFile [39m[32m~/micromamba/envs/uxarray-vorticity-cookbook-dev/lib/python3.14/site-packages/xarray/backends/netCDF4_.py:771[39m, in [36mNetCDF4BackendEntrypoint.open_dataset[39m[34m(self, filename_or_obj, mask_and_scale, decode_times, concat_characters, decode_coords, drop_variables, use_cftime, decode_timedelta, group, mode, format, clobber, diskless, persist, auto_complex, lock, autoclose)[39m
+[32m    749[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34mopen_dataset[39m(
+[32m    750[39m     [38;5;28mself[39m,
+[32m    751[39m     filename_or_obj: T_PathFileOrDataStore,
+[32m   (...)[39m[32m    768[39m     autoclose=[38;5;28;01mFalse[39;00m,
+[32m    769[39m ) -> Dataset:
+[32m    770[39m     filename_or_obj = _normalize_path(filename_or_obj)
+[32m--> [39m[32m771[39m     store = [30;43mNetCDF4DataStore[39;49m[30;43m.[39;49m[30;43mopen[39;49m[30;43m([39;49m
+[32m    772[39m [30;43m        [39;49m[30;43mfilename_or_obj[39;49m[30;43m,[39;49m
+[32m    773[39m [30;43m        [39;49m[30;43mmode[39;49m[30;43m=[39;49m[30;43mmode[39;49m[30;43m,[39;49m
+[32m    774[39m [30;43m        [39;49m[30;43mformat[39;49m[30;43m=[39;49m[30;43mformat[39;49m[30;43m,[39;49m
+[32m    775[39m [30;43m        [39;49m[30;43mgroup[39;49m[30;43m=[39;49m[30;43mgroup[39;49m[30;43m,[39;49m
+[32m    776[39m [30;43m        [39;49m[30;43mclobber[39;49m[30;43m=[39;49m[30;43mclobber[39;49m[30;43m,[39;49m
+[32m    777[39m [30;43m        [39;49m[30;43mdiskless[39;49m[30;43m=[39;49m[30;43mdiskless[39;49m[30;43m,[39;49m
+[32m    778[39m [30;43m        [39;49m[30;43mpersist[39;49m[30;43m=[39;49m[30;43mpersist[39;49m[30;43m,[39;49m
+[32m    779[39m [30;43m        [39;49m[30;43mauto_complex[39;49m[30;43m=[39;49m[30;43mauto_complex[39;49m[30;43m,[39;49m
+[32m    780[39m [30;43m        [39;49m[30;43mlock[39;49m[30;43m=[39;49m[30;43mlock[39;49m[30;43m,[39;49m
+[32m    781[39m [30;43m        [39;49m[30;43mautoclose[39;49m[30;43m=[39;49m[30;43mautoclose[39;49m[30;43m,[39;49m
+[32m    782[39m [30;43m    [39;49m[30;43m)[39;49m
+[32m    784[39m     store_entrypoint = StoreBackendEntrypoint()
+[32m    785[39m     [38;5;28;01mwith[39;00m close_on_error(store):
+
+[36mFile [39m[32m~/micromamba/envs/uxarray-vorticity-cookbook-dev/lib/python3.14/site-packages/xarray/backends/netCDF4_.py:529[39m, in [36mNetCDF4DataStore.open[39m[34m(cls, filename, mode, format, group, clobber, diskless, persist, auto_complex, lock, lock_maker, autoclose)[39m
+[32m    525[39m [38;5;28;01melse[39;00m:
+[32m    526[39m     manager = CachingFileManager(
+[32m    527[39m         netCDF4.Dataset, filename, mode=mode, kwargs=kwargs, lock=lock
+[32m    528[39m     )
+[32m--> [39m[32m529[39m [38;5;28;01mreturn[39;00m [30;43mcls[39;49m[30;43m([39;49m[30;43mmanager[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mgroup[39;49m[30;43m=[39;49m[30;43mgroup[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mmode[39;49m[30;43m=[39;49m[30;43mmode[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mlock[39;49m[30;43m=[39;49m[30;43mlock[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mautoclose[39;49m[30;43m=[39;49m[30;43mautoclose[39;49m[30;43m)[39;49m
+
+[36mFile [39m[32m~/micromamba/envs/uxarray-vorticity-cookbook-dev/lib/python3.14/site-packages/xarray/backends/netCDF4_.py:429[39m, in [36mNetCDF4DataStore.__init__[39m[34m(self, manager, group, mode, lock, autoclose)[39m
+[32m    427[39m [38;5;28mself[39m._group = group
+[32m    428[39m [38;5;28mself[39m._mode = mode
+[32m--> [39m[32m429[39m [38;5;28mself[39m.format = [30;43mself[39;49m[30;43m.[39;49m[30;43mds[39;49m.data_model
+[32m    430[39m [38;5;28mself[39m._filename = [38;5;28mself[39m.ds.filepath()
+[32m    431[39m [38;5;28mself[39m.is_remote = is_remote_uri([38;5;28mself[39m._filename)
+
+[36mFile [39m[32m~/micromamba/envs/uxarray-vorticity-cookbook-dev/lib/python3.14/site-packages/xarray/backends/netCDF4_.py:538[39m, in [36mNetCDF4DataStore.ds[39m[34m(self)[39m
+[32m    536[39m [38;5;129m@property[39m
+[32m    537[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34mds[39m([38;5;28mself[39m):
+[32m--> [39m[32m538[39m     [38;5;28;01mreturn[39;00m [30;43mself[39;49m[30;43m.[39;49m[30;43m_acquire[39;49m[30;43m([39;49m[30;43m)[39;49m
+
+[36mFile [39m[32m~/micromamba/envs/uxarray-vorticity-cookbook-dev/lib/python3.14/site-packages/xarray/backends/netCDF4_.py:532[39m, in [36mNetCDF4DataStore._acquire[39m[34m(self, needs_lock)[39m
+[32m    531[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34m_acquire[39m([38;5;28mself[39m, needs_lock=[38;5;28;01mTrue[39;00m):
+[32m--> [39m[32m532[39m [30;43m    [39;49m[30;43;01mwith[39;49;00m[30;43m [39;49m[30;43mself[39;49m[30;43m.[39;49m[30;43m_manager[39;49m[30;43m.[39;49m[30;43macquire_context[39;49m[30;43m([39;49m[30;43mneeds_lock[39;49m[30;43m)[39;49m[30;43m [39;49m[30;43;01mas[39;49;00m[30;43m [39;49m[30;43mroot[39;49m[30;43m:[39;49m
+[32m    533[39m [30;43m        [39;49m[30;43mds[39;49m[30;43m [39;49m[30;43m=[39;49m[30;43m [39;49m[30;43m_nc4_require_group[39;49m[30;43m([39;49m[30;43mroot[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mself[39;49m[30;43m.[39;49m[30;43m_group[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mself[39;49m[30;43m.[39;49m[30;43m_mode[39;49m[30;43m)[39;49m
+[32m    534[39m     [38;5;28;01mreturn[39;00m ds
+
+[36mFile [39m[32m~/micromamba/envs/uxarray-vorticity-cookbook-dev/lib/python3.14/contextlib.py:141[39m, in [36m_GeneratorContextManager.__enter__[39m[34m(self)[39m
+[32m    139[39m [38;5;28;01mdel[39;00m [38;5;28mself[39m.args, [38;5;28mself[39m.kwds, [38;5;28mself[39m.func
+[32m    140[39m [38;5;28;01mtry[39;00m:
+[32m--> [39m[32m141[39m     [38;5;28;01mreturn[39;00m [30;43mnext[39;49m[30;43m([39;49m[30;43mself[39;49m[30;43m.[39;49m[30;43mgen[39;49m[30;43m)[39;49m
+[32m    142[39m [38;5;28;01mexcept[39;00m [38;5;167;01mStopIteration[39;00m:
+[32m    143[39m     [38;5;28;01mraise[39;00m [38;5;167;01mRuntimeError[39;00m([33m"[39m[33mgenerator didn[39m[33m'[39m[33mt yield[39m[33m"[39m) [38;5;28;01mfrom[39;00m[38;5;250m [39m[38;5;28;01mNone[39;00m
+
+[36mFile [39m[32m~/micromamba/envs/uxarray-vorticity-cookbook-dev/lib/python3.14/site-packages/xarray/backends/file_manager.py:207[39m, in [36mCachingFileManager.acquire_context[39m[34m(self, needs_lock)[39m
+[32m    204[39m [38;5;129m@contextmanager[39m
+[32m    205[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34macquire_context[39m([38;5;28mself[39m, needs_lock: [38;5;28mbool[39m = [38;5;28;01mTrue[39;00m) -> Iterator[T_File]:
+[32m    206[39m [38;5;250m    [39m[33;03m"""Context manager for acquiring a file."""[39;00m
+[32m--> [39m[32m207[39m     file, cached = [30;43mself[39;49m[30;43m.[39;49m[30;43m_acquire_with_cache_info[39;49m[30;43m([39;49m[30;43mneeds_lock[39;49m[30;43m)[39;49m
+[32m    208[39m     [38;5;28;01mtry[39;00m:
+[32m    209[39m         [38;5;28;01myield[39;00m file
+
+[36mFile [39m[32m~/micromamba/envs/uxarray-vorticity-cookbook-dev/lib/python3.14/site-packages/xarray/backends/file_manager.py:225[39m, in [36mCachingFileManager._acquire_with_cache_info[39m[34m(self, needs_lock)[39m
+[32m    223[39m     kwargs = kwargs.copy()
+[32m    224[39m     kwargs[[33m"[39m[33mmode[39m[33m"[39m] = [38;5;28mself[39m._mode
+[32m--> [39m[32m225[39m file = [30;43mself[39;49m[30;43m.[39;49m[30;43m_opener[39;49m[30;43m([39;49m[30;43m*[39;49m[30;43mself[39;49m[30;43m.[39;49m[30;43m_args[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43m*[39;49m[30;43m*[39;49m[30;43mkwargs[39;49m[30;43m)[39;49m
+[32m    226[39m [38;5;28;01mif[39;00m [38;5;28mself[39m._mode == [33m"[39m[33mw[39m[33m"[39m:
+[32m    227[39m     [38;5;66;03m# ensure file doesn't get overridden when opened again[39;00m
+[32m    228[39m     [38;5;28mself[39m._mode = [33m"[39m[33ma[39m[33m"[39m
+
+[36mFile [39m[32msrc/netCDF4/_netCDF4.pyx:2522[39m
+[32m-> [39m[32m2522[39m [33m'Could not get source, probably due dynamically evaluated source code.'[39m
+
+[36mFile [39m[32msrc/netCDF4/_netCDF4.pyx:2159[39m
+[32m-> [39m[32m2159[39m [33m'Could not get source, probably due dynamically evaluated source code.'[39m
+
+[31mFileNotFoundError[39m: [Errno 2] No such file or directory: '/Users/Shared/JohnsData/MPAS/dymond_1_Falko/120km/x1.40962.grid.nc'
