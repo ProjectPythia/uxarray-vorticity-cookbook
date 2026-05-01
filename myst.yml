@@ -20,3 +20,5 @@ project:
   jupyter:
     binder:
       repo: ProjectPythia/uxarray-vorticity-cookbook
+site:
+  base_url: /uxarray-vorticity-cookbook
