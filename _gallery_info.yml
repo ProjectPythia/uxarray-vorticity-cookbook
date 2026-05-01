@@ -1,0 +1,11 @@
+thumbnail: thumbnail.png
+tags:
+  domains:
+    - atmospheric science
+    - numerical weather prediction
+    - unstructured grids
+  packages:
+    - uxarray
+    - holoviews
+    - hvplot
+    - matplotlib
