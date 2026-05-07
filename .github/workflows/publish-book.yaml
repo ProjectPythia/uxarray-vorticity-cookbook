@@ -10,8 +10,6 @@ on:
 jobs:
   build:
     uses: ProjectPythia/cookbook-actions/.github/workflows/build-book.yaml@main
-    with:
-      base_url: /uxarray-vorticity-cookbook
 
   deploy:
     needs: build
