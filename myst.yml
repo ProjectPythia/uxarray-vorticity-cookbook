@@ -1,4 +1,3 @@
-# See docs at: https://mystmd.org/guide/frontmatter
 version: 1
 extends:
   - https://raw.githubusercontent.com/projectpythia/pythia-config/main/pythia.yml
@@ -19,8 +18,8 @@ project:
       children:
         - file: notebooks/mpas_vorticity.ipynb
   jupyter:
-    binder:
-      repo: ProjectPythia/uxarray-vorticity-cookbook
+      binder:
+        repo: ProjectPythia/uxarray-vorticity-cookbook
 site:
   options:
     logo: notebooks/images/logos/pythia_logo-white-rtext.svg
