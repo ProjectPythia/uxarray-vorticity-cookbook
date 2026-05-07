@@ -4,10 +4,11 @@ extends:
   - https://raw.githubusercontent.com/projectpythia/pythia-config/main/pythia.yml
 project:
   title: UXarray Vorticity Cookbook
-  github: https://github.com/ProjectPythia/uxarray-vorticity-cookbook
   authors:
     - name: John Clyne
+      url: https://projectpythia.org/
       orcid: https://orcid.org/0000-0003-2788-9017
+  github: https://github.com/ProjectPythia/uxarray-vorticity-cookbook
   copyright: '2025'
   toc:
     - file: README.md
@@ -21,4 +22,7 @@ project:
     binder:
       repo: ProjectPythia/uxarray-vorticity-cookbook
 site:
-  base_url: /uxarray-vorticity-cookbook
+  options:
+    logo: notebooks/images/logos/pythia_logo-white-rtext.svg
+    folders: true
+  template: book-theme
