@@ -10,18 +10,18 @@
 [32m---> [39m[32m56[39m     value = [30;43mself[39;49m[30;43m.[39;49m[30;43m_cache[39;49m[30;43m[[39;49m[30;43mkey[39;49m[30;43m][39;49m
 [32m     57[39m     [38;5;28mself[39m._cache.move_to_end(key)
 
-[31mKeyError[39m: [<class 'netCDF4._netCDF4.Dataset'>, ('/Users/Shared/JohnsData/MPAS/dymond_1_Falko/120km/x1.40962.grid.nc',), 'r', (('clobber', True), ('diskless', False), ('format', 'NETCDF4'), ('persist', False)), 'eb7b5933-805a-4732-b8c9-efda32ba4a15']
+[31mKeyError[39m: [<class 'netCDF4._netCDF4.Dataset'>, ('/Users/Shared/JohnsData/MPAS/dymond_1_Falko/120km/x1.40962.grid.nc',), 'r', (('clobber', True), ('diskless', False), ('format', 'NETCDF4'), ('persist', False)), '857ed570-dc72-4d3b-b305-4583fea90816']
 
 During handling of the above exception, another exception occurred:
 
 [31mFileNotFoundError[39m                         Traceback (most recent call last)
-[36mFile [39m[32m~/micromamba/envs/uxarray-vorticity-cookbook-dev/lib/python3.14/site-packages/uxarray/core/utils.py:33[39m, in [36m_open_dataset_with_fallback[39m[34m(filename_or_obj, chunks, **kwargs)[39m
-[32m     31[39m [38;5;28;01mtry[39;00m:
-[32m     32[39m     [38;5;66;03m# Try opening with xarray's default read engine[39;00m
-[32m---> [39m[32m33[39m     [38;5;28;01mreturn[39;00m [30;43mxr[39;49m[30;43m.[39;49m[30;43mopen_dataset[39;49m[30;43m([39;49m[30;43mfilename_or_obj[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mchunks[39;49m[30;43m=[39;49m[30;43mchunks[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43m*[39;49m[30;43m*[39;49m[30;43mkwargs[39;49m[30;43m)[39;49m
-[32m     34[39m [38;5;28;01mexcept[39;00m [38;5;167;01mException[39;00m:
-[32m     35[39m     [38;5;66;03m# If it fails, use the "netcdf4" engine as backup[39;00m
-[32m     36[39m     [38;5;66;03m# Extract engine from kwargs to prevent duplicate parameter error[39;00m
+[36mFile [39m[32m~/micromamba/envs/uxarray-vorticity-cookbook-dev/lib/python3.14/site-packages/uxarray/core/utils.py:34[39m, in [36m_open_dataset_with_fallback[39m[34m(filename_or_obj, chunks, **kwargs)[39m
+[32m     32[39m [38;5;28;01mtry[39;00m:
+[32m     33[39m     [38;5;66;03m# Try opening with xarray's default read engine[39;00m
+[32m---> [39m[32m34[39m     [38;5;28;01mreturn[39;00m [30;43mxr[39;49m[30;43m.[39;49m[30;43mopen_dataset[39;49m[30;43m([39;49m[30;43mfilename_or_obj[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mchunks[39;49m[30;43m=[39;49m[30;43mchunks[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43m*[39;49m[30;43m*[39;49m[30;43mkwargs[39;49m[30;43m)[39;49m
+[32m     35[39m [38;5;28;01mexcept[39;00m [38;5;167;01mException[39;00m:
+[32m     36[39m     [38;5;66;03m# If it fails, use the "netcdf4" engine as backup[39;00m
+[32m     37[39m     [38;5;66;03m# Extract engine from kwargs to prevent duplicate parameter error[39;00m
 
 [36mFile [39m[32m~/micromamba/envs/uxarray-vorticity-cookbook-dev/lib/python3.14/site-packages/xarray/backends/api.py:613[39m, in [36mopen_dataset[39m[34m(filename_or_obj, engine, chunks, cache, decode_cf, mask_and_scale, decode_times, decode_timedelta, use_cftime, concat_characters, decode_coords, drop_variables, create_default_indexes, inline_array, chunked_array_type, from_array_kwargs, backend_kwargs, **kwargs)[39m
 [32m    612[39m overwrite_encoded_chunks = kwargs.pop([33m"[39m[33moverwrite_encoded_chunks[39m[33m"[39m, [38;5;28;01mNone[39;00m)
@@ -111,7 +111,7 @@ During handling of the above exception, another exception occurred:
 [32m---> [39m[32m56[39m     value = [30;43mself[39;49m[30;43m.[39;49m[30;43m_cache[39;49m[30;43m[[39;49m[30;43mkey[39;49m[30;43m][39;49m
 [32m     57[39m     [38;5;28mself[39m._cache.move_to_end(key)
 
-[31mKeyError[39m: [<class 'netCDF4._netCDF4.Dataset'>, ('/Users/Shared/JohnsData/MPAS/dymond_1_Falko/120km/x1.40962.grid.nc',), 'r', (('clobber', True), ('diskless', False), ('format', 'NETCDF4'), ('persist', False)), 'a4876f5a-d409-4b2a-9995-8eae5bb0bf73']
+[31mKeyError[39m: [<class 'netCDF4._netCDF4.Dataset'>, ('/Users/Shared/JohnsData/MPAS/dymond_1_Falko/120km/x1.40962.grid.nc',), 'r', (('clobber', True), ('diskless', False), ('format', 'NETCDF4'), ('persist', False)), '9583a207-2593-451d-9566-74f45ab5953a']
 
 During handling of the above exception, another exception occurred:
 
@@ -123,36 +123,37 @@ During handling of the above exception, another exception occurred:
 [32m----> [39m[32m4[39m uxds = ux.open_dataset(grid_path, data_path)
 [32m      5[39m uxds
 
-[36mFile [39m[32m~/micromamba/envs/uxarray-vorticity-cookbook-dev/lib/python3.14/site-packages/uxarray/core/api.py:414[39m, in [36mopen_dataset[39m[34m(grid_filename_or_obj, filename_or_obj, chunks, chunk_grid, use_dual, grid_kwargs, **kwargs)[39m
-[32m    411[39m     grid_kwargs = {}
-[32m    413[39m [38;5;66;03m# Construct a Grid, validate parameters, and correct chunks[39;00m
-[32m--> [39m[32m414[39m uxgrid, corrected_chunks = [30;43m_get_grid[39;49m[30;43m([39;49m
-[32m    415[39m [30;43m    [39;49m[30;43mgrid_filename_or_obj[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mchunks[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mchunk_grid[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43muse_dual[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mgrid_kwargs[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43m*[39;49m[30;43m*[39;49m[30;43mkwargs[39;49m
-[32m    416[39m [30;43m[39;49m[30;43m)[39;49m
-[32m    418[39m [38;5;66;03m# Load the data as a Xarray Dataset[39;00m
-[32m    419[39m ds = _open_dataset_with_fallback(filename_or_obj, chunks=corrected_chunks, **kwargs)
+[36mFile [39m[32m~/micromamba/envs/uxarray-vorticity-cookbook-dev/lib/python3.14/site-packages/uxarray/core/api.py:451[39m, in [36mopen_dataset[39m[34m(grid_filename_or_obj, filename_or_obj, chunks, chunk_grid, use_dual, grid_kwargs, **kwargs)[39m
+[32m    448[39m     filename_or_obj = grid_filename_or_obj
+[32m    449[39m [38;5;28;01melse[39;00m:
+[32m    450[39m     [38;5;66;03m# Construct a Grid, validate parameters, and correct chunks[39;00m
+[32m--> [39m[32m451[39m     uxgrid, corrected_chunks = [30;43m_get_grid[39;49m[30;43m([39;49m
+[32m    452[39m [30;43m        [39;49m[30;43mgrid_filename_or_obj[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mchunks[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mchunk_grid[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43muse_dual[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mgrid_kwargs[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43m*[39;49m[30;43m*[39;49m[30;43mkwargs[39;49m
+[32m    453[39m [30;43m    [39;49m[30;43m)[39;49m
+[32m    455[39m     [38;5;66;03m# Load the data as a Xarray Dataset[39;00m
+[32m    456[39m     [38;5;28;01mif[39;00m [38;5;28misinstance[39m(filename_or_obj, xr.Dataset):
 
-[36mFile [39m[32m~/micromamba/envs/uxarray-vorticity-cookbook-dev/lib/python3.14/site-packages/uxarray/core/api.py:531[39m, in [36m_get_grid[39m[34m(grid_filename_or_obj, chunks, chunk_grid, use_dual, grid_kwargs, **kwargs)[39m
-[32m    528[39m grid_kwargs[[33m"[39m[33mreturn_chunks[39m[33m"[39m] = [38;5;28;01mTrue[39;00m
-[32m    530[39m [38;5;66;03m# Create a Grid[39;00m
-[32m--> [39m[32m531[39m [38;5;28;01mreturn[39;00m [30;43mopen_grid[39;49m[30;43m([39;49m[30;43mgrid_filename_or_obj[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43muse_dual[39;49m[30;43m=[39;49m[30;43muse_dual[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43m*[39;49m[30;43m*[39;49m[30;43mgrid_kwargs[39;49m[30;43m)[39;49m
+[36mFile [39m[32m~/micromamba/envs/uxarray-vorticity-cookbook-dev/lib/python3.14/site-packages/uxarray/core/api.py:575[39m, in [36m_get_grid[39m[34m(grid_filename_or_obj, chunks, chunk_grid, use_dual, grid_kwargs, **kwargs)[39m
+[32m    572[39m grid_kwargs[[33m"[39m[33mreturn_chunks[39m[33m"[39m] = [38;5;28;01mTrue[39;00m
+[32m    574[39m [38;5;66;03m# Create a Grid[39;00m
+[32m--> [39m[32m575[39m [38;5;28;01mreturn[39;00m [30;43mopen_grid[39;49m[30;43m([39;49m[30;43mgrid_filename_or_obj[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43muse_dual[39;49m[30;43m=[39;49m[30;43muse_dual[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43m*[39;49m[30;43m*[39;49m[30;43mgrid_kwargs[39;49m[30;43m)[39;49m
 
-[36mFile [39m[32m~/micromamba/envs/uxarray-vorticity-cookbook-dev/lib/python3.14/site-packages/uxarray/core/api.py:130[39m, in [36mopen_grid[39m[34m(grid_filename_or_obj, chunks, use_dual, **kwargs)[39m
-[32m    126[39m     grid = Grid.from_dataset(grid_filename_or_obj, use_dual=use_dual)
-[32m    128[39m [38;5;28;01melse[39;00m:
-[32m    129[39m     [38;5;66;03m# Attempt to use Xarray directly for remaining input types[39;00m
-[32m--> [39m[32m130[39m     grid_ds = [30;43m_open_dataset_with_fallback[39;49m[30;43m([39;49m
-[32m    131[39m [30;43m        [39;49m[30;43mgrid_filename_or_obj[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mchunks[39;49m[30;43m=[39;49m[30;43mgrid_chunks[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43m*[39;49m[30;43m*[39;49m[30;43mkwargs[39;49m
-[32m    132[39m [30;43m    [39;49m[30;43m)[39;49m
-[32m    133[39m     grid = Grid.from_dataset(grid_ds, use_dual=use_dual)
-[32m    135[39m [38;5;66;03m# Return the grid (and chunks, if requested) in a consistent manner.[39;00m
+[36mFile [39m[32m~/micromamba/envs/uxarray-vorticity-cookbook-dev/lib/python3.14/site-packages/uxarray/core/api.py:127[39m, in [36mopen_grid[39m[34m(grid_filename_or_obj, chunks, use_dual, **kwargs)[39m
+[32m    123[39m     grid = Grid.from_dataset(grid_filename_or_obj, use_dual=use_dual)
+[32m    125[39m [38;5;28;01melse[39;00m:
+[32m    126[39m     [38;5;66;03m# Attempt to use Xarray directly for remaining input types[39;00m
+[32m--> [39m[32m127[39m     grid_ds = [30;43m_open_dataset_with_fallback[39;49m[30;43m([39;49m
+[32m    128[39m [30;43m        [39;49m[30;43mgrid_filename_or_obj[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mchunks[39;49m[30;43m=[39;49m[30;43mgrid_chunks[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43m*[39;49m[30;43m*[39;49m[30;43mkwargs[39;49m
+[32m    129[39m [30;43m    [39;49m[30;43m)[39;49m
+[32m    130[39m     grid = Grid.from_dataset(grid_ds, use_dual=use_dual)
+[32m    132[39m [38;5;66;03m# Return the grid (and chunks, if requested) in a consistent manner.[39;00m
 
-[36mFile [39m[32m~/micromamba/envs/uxarray-vorticity-cookbook-dev/lib/python3.14/site-packages/uxarray/core/utils.py:38[39m, in [36m_open_dataset_with_fallback[39m[34m(filename_or_obj, chunks, **kwargs)[39m
-[32m     34[39m [38;5;28;01mexcept[39;00m [38;5;167;01mException[39;00m:
-[32m     35[39m     [38;5;66;03m# If it fails, use the "netcdf4" engine as backup[39;00m
-[32m     36[39m     [38;5;66;03m# Extract engine from kwargs to prevent duplicate parameter error[39;00m
-[32m     37[39m     engine = kwargs.pop([33m"[39m[33mengine[39m[33m"[39m, [33m"[39m[33mnetcdf4[39m[33m"[39m)
-[32m---> [39m[32m38[39m     [38;5;28;01mreturn[39;00m [30;43mxr[39;49m[30;43m.[39;49m[30;43mopen_dataset[39;49m[30;43m([39;49m[30;43mfilename_or_obj[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mengine[39;49m[30;43m=[39;49m[30;43mengine[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mchunks[39;49m[30;43m=[39;49m[30;43mchunks[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43m*[39;49m[30;43m*[39;49m[30;43mkwargs[39;49m[30;43m)[39;49m
+[36mFile [39m[32m~/micromamba/envs/uxarray-vorticity-cookbook-dev/lib/python3.14/site-packages/uxarray/core/utils.py:39[39m, in [36m_open_dataset_with_fallback[39m[34m(filename_or_obj, chunks, **kwargs)[39m
+[32m     35[39m [38;5;28;01mexcept[39;00m [38;5;167;01mException[39;00m:
+[32m     36[39m     [38;5;66;03m# If it fails, use the "netcdf4" engine as backup[39;00m
+[32m     37[39m     [38;5;66;03m# Extract engine from kwargs to prevent duplicate parameter error[39;00m
+[32m     38[39m     engine = kwargs.pop([33m"[39m[33mengine[39m[33m"[39m, [33m"[39m[33mnetcdf4[39m[33m"[39m)
+[32m---> [39m[32m39[39m     [38;5;28;01mreturn[39;00m [30;43mxr[39;49m[30;43m.[39;49m[30;43mopen_dataset[39;49m[30;43m([39;49m[30;43mfilename_or_obj[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mengine[39;49m[30;43m=[39;49m[30;43mengine[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mchunks[39;49m[30;43m=[39;49m[30;43mchunks[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43m*[39;49m[30;43m*[39;49m[30;43mkwargs[39;49m[30;43m)[39;49m
 
 [36mFile [39m[32m~/micromamba/envs/uxarray-vorticity-cookbook-dev/lib/python3.14/site-packages/xarray/backends/api.py:613[39m, in [36mopen_dataset[39m[34m(filename_or_obj, engine, chunks, cache, decode_cf, mask_and_scale, decode_times, decode_timedelta, use_cftime, concat_characters, decode_coords, drop_variables, create_default_indexes, inline_array, chunked_array_type, from_array_kwargs, backend_kwargs, **kwargs)[39m
 [32m    601[39m decoders = _resolve_decoders_kwargs(
